@@ -1,0 +1,16 @@
+{
+  "token": "Token Here",
+  "prefix": "!",
+  "status": "🔧 !wm-cmds on the Server",
+  "intents": [
+    "Guilds",
+    "GuildMessages",
+    "MessageContent",
+    "DirectMessages",
+    "GuildMembers"
+  ],
+  "akys": "Yellow Skunk API Key here",
+  "cohereKey": "Cohere API Key",
+  "clientId": "Application ID",
+  "yellowSkunkClientId": "OAuth Client ID"
+}
