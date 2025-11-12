@@ -1,0 +1,76 @@
+Yellow Skunk Intellectual Property Declaration
+Version 1.0 – © 2025 Yellow Skunk / Wenda AI Project
+
+───────────────────────────────────────────────────────────────
+1. PURPOSE
+───────────────────────────────────────────────────────────────
+This document establishes the intellectual property boundaries
+of the Yellow Skunk ecosystem, including the Wenda AI project
+and any affiliated platforms, codebases, or assets.
+
+───────────────────────────────────────────────────────────────
+2. COPYRIGHT OWNERSHIP
+───────────────────────────────────────────────────────────────
+All original creative content within this repository, including:
+- Source code and software architecture
+- UI/UX layouts, icons, and visual themes
+- Illustrations, models, videos, and sound design
+- Text, documentation, and narrative materials
+- Platform concepts, names, and structure
+are owned exclusively by Yellow Skunk and its verified creators.
+
+Unauthorized duplication, reproduction, or resale is prohibited.
+
+───────────────────────────────────────────────────────────────
+3. REGISTERED ENTITIES
+───────────────────────────────────────────────────────────────
+The following marks, identities, and symbols are recognized as
+intellectual properties of the Yellow Skunk brand family:
+
+• “Yellow Skunk”
+• “Wenda AI” and “Wenda Moderation”
+• “SkunkPlatform”, “DiamondPlatform”, and “MoonPlatform”
+• “YSCoins”, “YSTeenCoin”, and related currencies
+• The Skunk head logo, Wenda character design, and visual identity
+
+All listed names and symbols are protected by creative trademark
+law and digital rights management. Use requires written consent.
+
+───────────────────────────────────────────────────────────────
+4. EXTENDED COVERAGE
+───────────────────────────────────────────────────────────────
+This IP declaration applies to:
+- Public and private repositories
+- Hosted applications and Netlify sites
+- Roblox experiences and associated Lua scripts
+- Discord bots and web APIs
+- Promotional content, video trailers, and documentation
+
+Any reproduction, sale, or branding adaptation beyond fair use
+must be authorized via legal@yellow-skunk.dev.
+
+───────────────────────────────────────────────────────────────
+5. CREATIVE ATTRIBUTION
+───────────────────────────────────────────────────────────────
+Any permitted reuse must include attribution:
+
+“Developed by Yellow Skunk © 2025 – Wenda AI Project”
+
+Attribution must appear visibly in documentation or credits.
+
+───────────────────────────────────────────────────────────────
+6. ENFORCEMENT
+───────────────────────────────────────────────────────────────
+Yellow Skunk reserves the right to enforce these terms through
+copyright law, DMCA takedowns, or digital repository notices.
+All violations will be reviewed and logged for escalation.
+
+───────────────────────────────────────────────────────────────
+7. CONTACT
+───────────────────────────────────────────────────────────────
+For inquiries regarding IP usage, verification, or permissions:
+📧 personal.yellowskunk@gmail.com
+🌐 https://yellowskunk.netlify.app/skunk-intellectual
+
+───────────────────────────────────────────────────────────────
+End of SKUNK-INTELLECTUAL
