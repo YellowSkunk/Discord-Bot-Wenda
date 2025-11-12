@@ -65,7 +65,7 @@ for any damages, direct or indirect, arising from use of the project.
 8. CONTACT & PERMISSIONS
 ───────────────────────────────────────────────────────────────
 For license clarifications, brand usage, or extended permissions:
-📧 contact@yellow-skunk.dev
+📧 personal.yellowskunk@gmail.com
 🌐 https://yellowskunk.netlify.app
 
 ───────────────────────────────────────────────────────────────
