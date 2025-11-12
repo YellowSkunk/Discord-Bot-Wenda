@@ -1,0 +1,72 @@
+Yellow Skunk Terms of Use & Contribution Policy
+Version 1.0 – © 2025 Yellow Skunk / Wenda AI Project
+
+───────────────────────────────────────────────────────────────
+1. PURPOSE
+───────────────────────────────────────────────────────────────
+These Terms govern the use, modification, and contribution of any
+files or assets found in this repository. By cloning, forking,
+or contributing, you agree to comply with these conditions.
+
+───────────────────────────────────────────────────────────────
+2. OWNERSHIP
+───────────────────────────────────────────────────────────────
+All original code, design, text, images, sounds, and related assets
+are the property of Yellow Skunk and its collaborators under the
+Wenda AI ecosystem.  
+Public access does not imply transfer of ownership.
+
+───────────────────────────────────────────────────────────────
+3. CONTRIBUTIONS
+───────────────────────────────────────────────────────────────
+Pull requests, patches, or feature suggestions are welcome only if:
+
+- The contributor owns or has rights to all submitted material.
+- Submissions do not contain third-party assets without license.
+- All contributed code is released under the same MIT License
+  (see LICENSE) and follows repository contribution guidelines.
+
+By submitting a contribution, you grant Yellow Skunk a perpetual,
+worldwide, and royalty-free right to use, modify, and distribute
+your contribution within Wenda and related projects.
+
+───────────────────────────────────────────────────────────────
+4. RESTRICTIONS
+───────────────────────────────────────────────────────────────
+You may NOT:
+- Use “Wenda,” “Yellow Skunk,” or related marks to promote unrelated
+  projects, bots, or products.
+- Repackage or sell code, assets, or data as part of commercial tools.
+- Circumvent repository security systems or automated moderation.
+
+───────────────────────────────────────────────────────────────
+5. BRAND & IDENTITY
+───────────────────────────────────────────────────────────────
+The Yellow Skunk brand design, including Wenda logos, icons, and UI
+elements, are protected works.  
+Any public forks or deployments must remove or replace these assets
+unless written permission is granted.
+
+───────────────────────────────────────────────────────────────
+6. SECURITY RESPONSIBILITY
+───────────────────────────────────────────────────────────────
+Developers using this repository agree to secure their own API keys,
+Firebase credentials, and tokens.  
+Yellow Skunk is not responsible for data loss or unauthorized access
+caused by insecure configurations.
+
+───────────────────────────────────────────────────────────────
+7. DISCLAIMER
+───────────────────────────────────────────────────────────────
+This software is provided “as is.” No warranty or liability is given
+for any damages, direct or indirect, arising from use of the project.
+
+───────────────────────────────────────────────────────────────
+8. CONTACT & PERMISSIONS
+───────────────────────────────────────────────────────────────
+For license clarifications, brand usage, or extended permissions:
+📧 contact@yellow-skunk.dev
+🌐 https://yellowskunk.netlify.app
+
+───────────────────────────────────────────────────────────────
+End of SKUNKTERMS
