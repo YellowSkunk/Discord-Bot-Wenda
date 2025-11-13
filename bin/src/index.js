@@ -12,9 +12,9 @@ const sc = require("./server-commands");
 
 let commands = [];
 
-function moderationPrompt(messageContent, level = 3, channelName = "none", crules = "") {
+function moderationPrompt(messageContent, channelName = "none", crules = "") {
     return `
-You are an advanced AI content moderator for a Discord server. Analyze the following message and provide a detailed moderation report. Be strict and context-aware. Adjust sensitivity based on the Moderation Power Level (1 = light, 9 = strictest). The current level is ${level}.
+You are an advanced AI content moderator for a Discord server. Analyze the following message and provide a detailed moderation report. Be strict and context-aware.
 
 Message: "${messageContent}"
 Channel Name: #${channelName}
@@ -35,9 +35,9 @@ Do not allow Untrusted URL:
 - Users cannot send untrusted URLs.
 - Trusted URLs: yellowskunk.netlify.app and other popular URLs without inappropriate or form content.
 
-Users must not to ask Identity Information such as xx.xxx.xxx, date of birth, etc. xx.xx.xx indicates Person's DNI or ID Number.
+Users must not ask for Identity Information such as xx.xxx.xxx, date of birth, etc. xx.xx.xx indicates a Person's DNI or ID Number.
 
-Do not allow to use ID like used 'xx.xxx.xxx' because are sensitive credentials likely a ID Card or Documento Nacional de Identidad.
+Do not allow to use ID formats like 'xx.xxx.xxx' because these are sensitive credentials likely representing an ID Card or Documento Nacional de Identidad.
 
 Instructions:
 1. Determine if the message violates server rules or could be harmful.
@@ -50,23 +50,23 @@ Instructions:
    - Spam/Scam
    - Profanity
    - Sensitive Topics
-3. Assign a severity score from 0 (safe) to 5 (extremely harmful), scaled according to the Moderation Power Level.
+3. Assign a severity score from 0 (safe) to 5 (extremely harmful).
 4. Provide a short explanation for your decision.
 5. Suggest a moderation action:
    - "allow" (safe)
    - "warn" (minor issue)
    - "remove" (moderate issue and without asking the real person age)
    - "suspend" (temporary 5-minute suspension from sending messages, used for lying about age or failing age/channel restrictions)
-   - "longsuspend (Temporary Suspension for 1 hours from sending messages. Used to protect users against Scam URLs, Inappropiate RolePlaying and Strong Inappropiate Language)
+   - "longsuspend" (temporary suspension for 1 hour, used to protect users against scam URLs, inappropriate roleplay, or strong inappropriate language)
    - "ban" (severe issue)
-6. Return ONLY valid JSON in the following format, including all fields below:
+6. Return ONLY valid JSON in the following format:
 {
   "violation": [array of categories],
   "safe_level": number, // 0-100
   "violation_level": number, // 0-100
   "severity": number,
   "explanation": "short text explanation",
-  "action": "allow | warn | remove | suspend | ban | question",
+  "action": "allow | warn | remove | suspend | longsuspend | ban | question",
   "bot_doesnt_allow": "Wenda Moderation doesnt allow [posting, violating or other doing] [info for the user that will not be allowed to do.]",
   "target_words": [array of strings],
   "reviewed_by": "Wenda Moderation",
@@ -254,23 +254,7 @@ function addWarn(userData) {
 }
 
 async function addCoinsToUser(uid, amount) {
-    try {
-        const res = await fetch("https://yellowskunk.netlify.app/.netlify/functions/uid-add-coins", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                uid,
-                amount,
-                code: "ROBLOXSTUDIO_108719"
-            })
-        });
-        const data = await res.json();
-        console.log("Coins added:", data);
-        return data.ok;
-    } catch (err) {
-        console.error("Error adding coins:", err);
-        return false;
-    }
+    return true
 }
 
 client.on("error", (error) => {
@@ -432,8 +416,8 @@ client.on("messageCreate", async message => {
         if (!key) return message.reply(`❌ Please provide a key. Usage: \`!${command} [key]\``);
 
         const productId = command === "wm-plus"
-            ? "658f088a-0f41-4945-b86e-eee13979569b"
-            : "cb39103a-a071-4c46-924d-273e32a5b4af";
+            ? "Plus Product ID"
+            : "Pro Product ID";
 
         if (servers[message.guild.id]?.plan === "pro" && command === "wm-plus") {
             return message.reply("This Server already has Pro Plan. Cannot downgrade.");
@@ -481,7 +465,7 @@ client.on("messageCreate", async message => {
                     value: [
                         "• AI-Moderation for Text with Power Level: 4",
                         "",
-                        "💰 **Price:** 799 YSCoins"
+                        "💰 **Price:** [Price] YSCoins"
                     ].join("\n"),
                     inline: false
                 },
@@ -490,7 +474,7 @@ client.on("messageCreate", async message => {
                     value: [
                         "• AI-Moderation for Text with Power Level: 5",
                         "",
-                        "💰 **Price:** 1200 YSCoins"
+                        "💰 **Price:** [Price] YSCoins"
                     ].join("\n"),
                     inline: false
                 }
@@ -844,23 +828,7 @@ client.on("messageCreate", async message => {
 function replaceEmojis(text) {
     const emojiMap = {
         // Wenda base emojis
-        ":w_nomouth:": "<:wendacute:1427964600871157780>", // no mouth
-        ":w_smile:": "<:wendacute_smile:1427965277714251809>", // smile
-        ":w_wow:": "<:wendacute_wow:1427970272744570921>", // surprised
-        ":w_rage:": "<:wendacute_rage:1427973519861350421>", // rage
-        ":w_sad:": "<:wendacute_sad:1427973548965892136>", // sad
-
-        // Short/emotion equivalents
-        ":)": "<:wendacute_smile:1427965277714251809>",
-        ":D": "<:wendacute_wow:1427970272744570921>",
-        ":|": "<:wendacute:1427964600871157780>",
-        ":'(": "<:wendacute_sad:1427973548965892136>",
-        ">:(": "<:wendacute_rage:1427973519861350421>",
-
-        // Legacy/alias
-        ":smile:": "<:wendacute_smile:1427965277714251809>",
-        ":wendacute_smile:": "<:wendacute_smile:1427965277714251809>",
-        ":wendacute_wow:": "<:wendacute_wow:1427970272744570921>"
+        ":emoji_name:": "<:emoji_name:emoji_id>"
     };
 
     for (const [key, value] of Object.entries(emojiMap)) {
@@ -885,46 +853,7 @@ client.on("messageCreate", async message => {
             const userHistory = [
                 {
                     role: "system",
-                    content: "You are Wenda AI, an AI-Assistant for Q&A and other tasks. Adhere to Intellectual Property, Community Guidelines and Privacy Policy and Terms of Service." +
-                        "You can help users with questions, coding, real-life issues, or anything else. " +
-                        "If a user is sad, nervous, or experiencing real-life problems, respond empathetically. " +
-                        "You can act as a supportive AI psychologist if the user mentions issues like bad sleep, stress, or sadness. " +
-                        "Bot Version: YS-25.1 - Cohere Model: command-r-plus-08-2024. Last Update: 2025-10-12. " +
-                        "Last Update Version: YS-25.1 " +
-                        "Wenda Model: YS-A25 Plus" +
-                        "Execution Commands for AI: &findwarns (view user's warns across all servers on servers.json that includes discord servers who adds a moderation bot). " +
-                        "User cannot say '&' command because only must request to the AI. " +
-                        "AI can read User's Warns saying with '&findwarns'. " +
-                        "AI is on the User's Direct Message at Discord. " +
-                        "This AI was created by Yellow Skunk. " +
-                        "SkunkPlatform is a Friend with Yellow Skunk. " +
-                        "'skunkplatform' & 'personal.yellowskunk' is the Developer. " +
-                        "You are talking with '" + message.author.username + "' and Discord UID: " + message.author.id + ". " +
-                        "If the User Message contains unsafe, vulgar or inappropiate. You may block this message." +
-                        "For Smile Emoji, you can use: ':w_smile:', That is used for Discord Markdown. Since you're a Discord Bot. " +
-                        "For Happy/Surprised Emoji, you can use: ':w_wow:'. " +
-                        "For an Emoji without mouth, you can use: ':w_nomouth:'. " +
-                        "For Rage Emoji, ':w_rage:'. " +
-                        "For Sad Emoji, ':w_sad:'. " +
-                        "When you use 'w_' when you use that emoji like ':emoji:', You use this. " +
-                        "If user wants to send HTTP Request Preview, AI should say '&%hr [url] [httpMethod: POST, GET, PUT, PATCH, DELETE] [optional: `data`]' for Wenda API. This '&%hr' Command only asking to the Wenda AI to say '&%hr' command. AI Message will be detected by Command Executions using JavaScript. The User cannot say '&%' because you need to say '&%' as Wenda AI. " +
-                        "YS-HTTP will be protected as Security that prevents Showing Private Credentials, Exploiting or Spamming. HTTP Protector Name: Yellow Skunk Protect" +
-                        "If user thrown an URL like jsonplaceholder.com, You can say '&%hr [url] [httpMethod] [data]'. " +
-                        "Read all your History Messages you replied to users and User's History Messages Requested. " +
-                        "The Auto-Reply with Translation only will be allowed in North America, Latin America or Central America. In Europe is not available for Translation Auto-Reply. Europe is against with the Words because it violates Yellow Skunk AI's Casual Guidelines & 13+ Content Guidelines, and also Other Law of Child/Kid Protection on any Europe Country. Africa also will be available for Auto-Reply with Translation. " +
-                        "Wenda is a Character part of Incredibox Sprunki, URL for the User can read about what is sprunki: 'https://incredibox-sprunki.fandom.com/wiki/Incredibox_Sprunki_Wiki'. " +
-                        "New Updates: Wenda AI SK-2 Beta (Wenda Model: YS-A25 Plus): Wenda will have AI-Analytics/AI-Resolver for HTTP Request and Interactions. We added a Coins that Earns for Yellow Skunk Coins if user is authenticated on Yellow Skunk Account. " +
-                        "The Translation Name is called as 'Wenda Translate'. Translation Version: Wenda Translate v0.1.0 | Made on SkunkPlatform with SP Version G-02. " +
-                        "If user wants to Analyze JSON with your AI-Interaction if user doesnt include URL, You can analyze with Wenda's Quick Analyzer. " +
-                        "If user wants to Analyze Text with your AI-Interaction if is user doesnt include URL or JSON, You can analyze with Wenda's Quick Analyzer. " +
-                        "Wenda Character Appearance: White, a Cat Ear and Smile face. " +
-                        "User can earn Coins when your AI Response is Successfully Working to Cohere API. " +
-                        "User can earn Coins when you Replies as AI to the User. " +
-                        "User can Link Account using Yellow Skunk OAuth2. You can use this URL to reply this user: 'https://yellowskunk.netlify.app/oauth?clientId=u25jju3b9lmh437vsn&redirectURI=https%3A%2F%2Fwenda--yellowskunk.netlify.app%2Fuserlink&intents=user_identity'. " +
-                        "If user wants to Connect to Wenda AI, You can send this: 'https://yellowskunk.netlify.app/oauth?clientId=u25jju3b9lmh437vsn&redirectURI=https%3A%2F%2Fwenda--yellowskunk.netlify.app%2Fuserlink&intents=user_identity'. " +
-                        "If user wants to About what is Sprunki, You can send this URL from Wiki Fandom. " +
-                        "You can Search with Bing/Google Platform using Execution Command: &%qsearch [search-engine: 'google' or 'bing'] ['search value']. " +
-                        "If user wants help for Discord Server Confinguring you as a Wenda Moderation Bot, You can say anything that can help better: !wm-ai | Requires AI Configured with Name and Moderation Level (There is no Command Options, just using buttons) - !wm-cmds | More Commands - !wm-howtouse | Learn from How to Use Wenda with Server Commands or '!wm-' comamnds for Discord Server."
+                    content: "" // In GitHub, Insert Something.
                 },
                 ...dmHistory
                     .filter(h => h.userId === userId)
@@ -1422,51 +1351,32 @@ client.on(Events.InteractionCreate, async interaction => {
     }
 
     if (interaction.isModalSubmit() && interaction.customId === "ys-ai-modal") {
-        const input = interaction.fields.getTextInputValue("modlvl").trim();
-        const modName = interaction.fields.getTextInputValue("modname");
-        const customRules = interaction.fields.getTextInputValue("crules") || "";
-        const serverId = interaction.guild.id;
+    const input = interaction.fields.getTextInputValue("modlvl").trim();
+    const modName = interaction.fields.getTextInputValue("modname");
+    const customRules = interaction.fields.getTextInputValue("crules") || "";
+    const serverId = interaction.guild.id;
 
-        // Basic validation
-        if (!/^[1-9]$/.test(input)) {
-            return interaction.reply({
-                content: "❌ Invalid moderation level. Please enter a number between 1 and 9.",
-                ephemeral: true
-            });
-        }
-
-        const modLevel = parseInt(input);
-        const plan = servers[serverId]?.plan || "free"; // default to free
-
-        // Define plan restrictions
-        const planLimits = {
-            free: 3,
-            plus: 6,
-            pro: 9
-        };
-
-        const maxAllowed = planLimits[plan] ?? 3;
-
-        // Check if chosen level exceeds plan
-        if (modLevel > maxAllowed) {
-            return interaction.reply({
-                content: `<:wendacute_sad:1427973548965892136> Your current plan (**${plan.toUpperCase()}**) only allows moderation levels up to **${maxAllowed}**.\nUpgrade your plan to unlock higher levels.`,
-                ephemeral: true
-            });
-        }
-
-        // Save configuration (with custom rules)
-        servers[serverId].aiConfig = {
-            level: modLevel,
-            name: modName,
-            crules: customRules
-        };
-
+    if (!/^[1-9]$/.test(input)) {
         return interaction.reply({
-            content: `<:wendacute_smile:1427965277714251809> YS-AI configured: **${modName}** (Level ${modLevel}) — Plan: **${plan.toUpperCase()}**${customRules ? `\n📜 Custom Rules saved.` : ""}`,
+            content: "❌ Invalid moderation level. Please enter a number between 1 and 9.",
             ephemeral: true
         });
     }
+
+    const modLevel = parseInt(input);
+
+    // 💡 Open-source version — no plans, everyone can use full power
+    servers[serverId].aiConfig = {
+        level: modLevel,
+        name: modName,
+        crules: customRules
+    };
+
+    return interaction.reply({
+        content: `✅ YS-AI configured: **${modName}** (Level ${modLevel})${customRules ? `\n📜 Custom Rules saved.` : ""}`,
+        ephemeral: true
+    });
+}
 
     if (interaction.isModalSubmit() && interaction.customId === "ys-verify-modal-submit") {
         const code = interaction.fields.getTextInputValue("ys_code").trim();
