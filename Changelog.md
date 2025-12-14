@@ -8,8 +8,8 @@ and adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ---
 
 ## 🔖 Project Identity
-**Project:** Wenda AI  
-**Version:** v0.1.0  
+**Project:** Wenda App  
+**Version:** v0.1.1
 **Maintainer:** Yellow Skunk Development Team  
 **License:** MIT (see LICENSE)  
 **Protection:** Wenda Copyright Protection  
