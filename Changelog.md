@@ -17,6 +17,13 @@ and adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [0.1.1] – 2025-12-14
+### ✨ Initial Release
+- Introduced **Wenda AI v0.1.1**.
+- Wenda Model: YS-25.1
+- New Moderation: Message for Images.
+- Forums & Wenda Sponsors
+
 ## [0.1.0] – 2025-11-12
 ### ✨ Initial Release
 - Introduced **Wenda AI v0.1.0**, the first stable build.  
